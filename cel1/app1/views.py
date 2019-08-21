@@ -46,14 +46,14 @@ def add(requestdata):
         #n = []
         
         print value
-        q = str(value)
-        print(q)
+        # q = str(value)
+        # print(q)
         # s = value['a']
         # sum(s)
         # print(s)
         #print('dsd')
         #type(s)
-        su = str(sum(value))
+        su = sum(value)
         print(su)
         # request.a
         # sum = sum(a)
@@ -71,9 +71,7 @@ def add(requestdata):
         # su = {
         #     "su": su
         # }
-        return Response({
-            "sum" : su,
-        })
+        return Response(su)
     except:
         return Response(status.HTTP_400_BAD_REQUEST)
 
