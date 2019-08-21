@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <title>Register</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <script src="{% static 'js/app.js' %}" ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Login</div>
+        <p>{{ message }}</p>
+        <form method="POST" action="/home/">
+            {% csrf_token %}
+            <div class="input-field">
+                <input id="email" type="email" name="email" class="validate" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="form-group input-field">
+                <input type="password" name="password" style="margin-bottom: 10px;" class="form-control validate" required minlength="8" id="exampleInputPassword1">
+                <label for="exampleInputPassword1">Password</label>
+                <div class="progress" style="height: 20px;background-color: rgba(34, 34, 34, 0.562);">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+            
+            <button type="submit" id="submit">Login</button>
+            <div class="already">Already have an account with us?<a href="#">Login</a></div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
