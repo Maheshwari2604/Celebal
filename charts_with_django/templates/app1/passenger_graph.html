@@ -1,0 +1,30 @@
+<div id="container"></div>
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script>
+  Highcharts.chart('container', {
+      chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'Titanic Survivors by Ticket Class'
+      },
+      xAxis: {
+          categories: [
+            {% for entry in dataset %}'{{ entry.AClass }} Class'{% if not forloop.last %}, {% endif %}{% endfor %}
+          ]
+      },
+      series: [{
+          name: 'Survived',
+          data: [
+            {% for entry in dataset %}{{ entry.sc }}{% if not forloop.last %}, {% endif %}{% endfor %}
+          ],
+          color: 'green'
+      }, {
+          name: 'Not survived',
+          data: [
+            {% for entry in dataset %}{{ entry.nsc }}{% if not forloop.last %}, {% endif %}{% endfor %}
+          ],
+          color: 'red'
+      }]
+  });
+</script>
