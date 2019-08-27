@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', passenger),
     url(r'^graph/', passenger1),
-    url(r'^login/', login),
+    url(r'^submit/', login),
 ]
