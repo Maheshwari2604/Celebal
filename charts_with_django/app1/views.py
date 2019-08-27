@@ -17,27 +17,34 @@ def passenger(request):
     return render(request , 'app1/main.html', {'dataset' : dataset})
 
 def login(request):
+    try:
         print("in try")
         if request.method == 'POST':
             print "register in post"
             name = request.POST['name']
-            AClass = request.POST['class']
+            AClass = request.POST['AClass']
             user = Passenger()
             user.name = name
             user.age = 11
             print(user.name)
             user.AClass = AClass
             print(user.AClass)
-            completed = request.POST.get('completed')
+            completed = request.POST['checkbox']
             print(completed)
             if completed == None:
                 user.s = False
+                user.save()
             else:
                 user.s = True
+                user.save()            
             
-            user.save()
             dataset = Passenger.objects.values('AClass').annotate(sc=Count('AClass' , filter = Q(s=True)),
             nsc=Count('AClass' , filter = Q(s=False))).order_by('AClass')            
             return render(request,'app1/main.html', {'dataset': dataset})
         else:
             return HttpResponse("Exist, please try new one")
+    except:
+            dataset = Passenger.objects.values('AClass').annotate(sc=Count('AClass' , filter = Q(s=True)),
+            nsc=Count('AClass' , filter = Q(s=False))).order_by('AClass')            
+            return render(request,'app1/main.html', {'dataset': dataset})
+        
