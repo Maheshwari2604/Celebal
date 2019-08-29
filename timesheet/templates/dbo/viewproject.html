@@ -115,7 +115,9 @@ nav li {
                       <td>{{ i.id }}</td>
                       <td>{{ i.projectname }}</td>
                       <td>{{ i.bill_date }}</td>
-                      <td>{{ i.task_type }}</td>
+                      {% for i in i.task_set.all %}
+                        <td>{{ i.type }}</td>
+                      {% endfor %}  
                       <td>{{ i.billed_hours }}</td>
                       <td>{{ i.task_description }}</td>
                       <td>{{ i.isapproved }}</td>

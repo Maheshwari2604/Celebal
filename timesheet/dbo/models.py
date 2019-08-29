@@ -46,7 +46,7 @@ class task(models.Model):
     type = models.CharField(max_length = 15)
 
     def __str__(self):
-        return (self.id)
+        return str(self.type)
 
 
 class timesheet(models.Model):
