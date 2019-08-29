@@ -1,0 +1,131 @@
+
+<html>
+<head>
+    <style>
+    
+    body {
+  font-family: sans-serif;
+}
+
+/* very basic reset */
+
+body,
+h1,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+  make the header
+  our first flex container
+*/
+
+header {
+  align-items: center;
+  display: flex;
+  margin: 2em;
+}
+
+/*
+  as children of header,
+  logo and nav
+  become our flex items
+*/
+
+#logo,
+nav {
+  
+  /*
+    flex is shorthand for
+    flex-grow,
+    flex-shrink,
+    and flex-basis
+
+    this gives us
+    auto equal width flex items
+    and they are all flexbile ... yay!
+  */
+  
+  flex: 1;
+}
+
+/*
+  make the nav ul
+  our second flex container
+*/
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*
+  as children of ul,
+  all list items
+  become flex items
+*/
+
+nav li {
+  list-style: none;
+}
+    
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <div class="table-responsive">
+</head>
+<body>  
+    <header>
+        <h1 id="logo">My Logo</h1>
+        <nav>
+            <ul>
+                <li><a href="/employeedetail/">Employee</a></li>
+                <li><a href="/projectdetail/">Register Projects</a></li>
+                <li><a href="/view/">View timesheets</a></li>
+                <li><a href="/view-timesheets/">View Projects</a></li>
+                <li><a href="#">Aproove Projects</a></li>
+            </ul>
+        </nav>
+    </header>      
+<table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">projectId</th>
+                    <th scope="col">emp_id</th>
+                    <th scope="col">bill_date</th>
+                    <th scope="col">task_type</th>
+                    <th scope="col">billed_hours</th>
+                    <th scope="col">task_description</th>
+                    <th scope="col">isapproved</th>
+                    <th scope="col">approved_by_emp_id</th>
+                    <th scope="col">last_updated</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in timesheet %}
+                  <tr>
+                      <th scope="row">{{ i.id }}</th>
+                    
+                      <td>{{ i.id }}</td>
+                      <td>{{ i.projectname }}</td>
+                      <td>{{ i.bill_date }}</td>
+                      <td>{{ i.task_type }}</td>
+                      <td>{{ i.billed_hours }}</td>
+                      <td>{{ i.task_description }}</td>
+                      <td>{{ i.isapproved }}</td>
+                      <td>{{ i.approved_by_emp_id }}</td>
+                      <td>{{ i.last_updated }}</td>
+                   
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+      </div>
+    </body>
+</html>
