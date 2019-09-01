@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from .models import Project , Employee , timesheet , task
+from .models import Project , Employee , timesheet , task , asset_type
 from django.contrib import admin
 
 # Register your models here.
@@ -28,7 +28,20 @@ class employee(admin.ModelAdmin):
         model = Employee
 
 
+class timesheets(admin.ModelAdmin):
+    list_display = ['id']
+    #list_editable = ['name' , 'title' , 'team']
+    #search_fields = ['name', 'title' , 'team']
+    #date_hierarchy = 'startdate'
+    readonly_fields = ['last_updated']
+    #prepopulated_fields = {"slug": ("username",)}
+
+    class meta:
+        model = timesheet
+
+
 admin.site.register(Employee , employee)
 admin.site.register(Project , project)
-admin.site.register(timesheet)
+admin.site.register(timesheet , timesheets)
 admin.site.register(task)
+admin.site.register(asset_type)

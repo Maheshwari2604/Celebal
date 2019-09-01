@@ -10,11 +10,13 @@ from django.db import models
 
 class Employee(models.Model):
     #code = models.CharField(db_column='Code', primary_key=True, max_length=3)  # Field name made lowercase.
+    emp_id = models.EmailField(max_length=250)
+    password = models.CharField(max_length=100, null=True)
     name = models.CharField(max_length=100)  # Field name made lowercase.
     title = models.CharField(null=True ,max_length=100)  # Field name made lowercase.
     team = models.CharField(null=True ,max_length=100)  # Field name made lowercase.
     manager = models.CharField(null=True ,max_length=100)  # Field name made lowercase.
-    manager_emp_id = models.CharField(null=True ,max_length=100)  # Field name made lowercase.
+    manager_emp_id = models.EmailField(max_length=250)  # Field name made lowercase.
     asset_type = models.CharField(null=True ,max_length=100)  # Field name made lowercase.
     
     def __str__(self):
@@ -36,11 +38,13 @@ class Project(models.Model):
         return str(self.id)
 
 
-class task(models.Model):
-    type = models.CharField(max_length = 15)
+class asset_type(models.Model):
+    types = models.CharField(max_length = 400)
 
     def __str__(self):
-        return str(self.type)
+        return str(self.types)
+
+
 
 class task(models.Model):
     type = models.CharField(max_length = 15)
@@ -55,8 +59,9 @@ class timesheet(models.Model):
     #task_type = models.ForeignKey(task, on_delete=models.CASCADE)
     projectid = models.IntegerField()
     emp_id = models.CharField(null=True , max_length=510)   # Field name made lowercase.
-    bill_date = models.DateTimeField(auto_now=False, auto_now_add=True)  # Field name made lowercase.
-    task_type = models.ForeignKey(task, on_delete=models.CASCADE)  # Field name made lowercase.
+    bill_date = models.DateField()  # Field name made lowercase.
+    #task_type = models.ForeignKey(task, on_delete=models.CASCADE)  # Field name made lowercase.
+    task_type = models.CharField(null=True , max_length=510)
     billed_hours = models.CharField(null=True , max_length=510)  # Field name made lowercase.
     task_description = models.CharField(null=True , max_length=510)  # Field name made lowercase.
     isapproved = models.CharField(null=True , max_length=510)

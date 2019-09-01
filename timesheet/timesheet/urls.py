@@ -15,12 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from dbo.views import employee , project , timesheets , view_projects
+from dbo.views import employee , project , timesheets , view_projects, Aproove_project, Aproove_projectt
+from login.views import home , user_login , logout
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', home , name = 'home'),
+    url(r'^login/', user_login),
     url(r'^employeedetail/', employee),
     url(r'^view/', view_projects),
     url(r'^projectdetail/', project),
-    url(r'^create-timesheet/', timesheets),
+    url(r'^create-timesheet/', timesheets ),
+    #url(r'^create-timesheet/', timesheets , name='timesheet'),
+    url(r'^aproove-project/', Aproove_project, name = 'Aproove_project'),
+    url(r'^aproove-projectt/(?P<id>[\w-]+)/$', Aproove_projectt , name = 'timesheet'),
+    url(r'^logout/', logout),
+
 ]
