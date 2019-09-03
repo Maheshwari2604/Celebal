@@ -1,0 +1,4 @@
+[{"model": "app1.profile", "pk": 1, "fields": 
+    {"name": "Dairy"}}, 
+ {"model": "app1.profile", "pk": 2, "fields": 
+    {"name": "Meat"}}]
