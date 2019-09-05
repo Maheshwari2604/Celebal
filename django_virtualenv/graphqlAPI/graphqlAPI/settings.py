@@ -25,7 +25,7 @@ SECRET_KEY = 'j$7e&$)5)@yht)&j7(9%ipwz6jj(-9v8df0fze!$l1!0m7h4-x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.45.32.189' , '127.0.0.1']
 
 
 # Application definition
@@ -123,5 +123,15 @@ STATIC_URL = '/static/'
 
 
 GRAPHENE = {
-    'SCHEMA': 'django_root.schema.schema'
+    'SCHEMA': 'django_root.schema.schema',
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
 }
+
+
+
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]

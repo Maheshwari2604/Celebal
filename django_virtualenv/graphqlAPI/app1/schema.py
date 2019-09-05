@@ -14,6 +14,29 @@ class subprofiletype(DjangoObjectType):
         model = subprofile
 
 
+# class createLink(graphene.Mutation):
+#     id = graphene.Int()
+#     name = graphene.String()
+
+#     class Arguments:
+#         name = graphene.String()
+
+#     def mutate(self , info , name):
+#         profile = profile(name = name)
+#         profile.save()
+
+#         return createLink(
+#             id = profile.id,
+#             name = profile.name,
+#         )
+
+
+
+# ...code
+#1
+
+
+
 class Query(object):
     all_categories = graphene.List(profiletype)
     all_ingredients = graphene.List(subprofiletype)
@@ -50,3 +73,26 @@ class Query(object):
             return subprofile.objects.get(name = name)
 
         return None
+
+
+class CreateLink(graphene.Mutation):
+    id = graphene.Int()
+    name = graphene.String()
+
+    #2
+    class Arguments:
+        name = graphene.String()
+        
+    #3
+    def mutate(self, info, name):
+        profilee = profile(name = name)
+        profilee.save()
+
+        return CreateLink(
+            id=profilee.id,
+            name=profilee.name,
+            )
+
+
+class Mutation(graphene.ObjectType):
+    Create_lk = CreateLink.Field()
