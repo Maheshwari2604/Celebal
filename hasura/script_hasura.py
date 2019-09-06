@@ -10,6 +10,7 @@ c = "CharField"
 #   DateField(_(u"Conversation Date"), blank=True) = Date
 #   UUIDField = UUID
 #   jsonfield.JSONField() = JSONB
+#
 
 
 
