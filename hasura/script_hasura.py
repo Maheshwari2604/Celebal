@@ -11,6 +11,8 @@ c = "CharField"
 #   UUIDField = UUID
 #   jsonfield.JSONField() = JSONB
 #
+#
+#
 
 
 
