@@ -1,4 +1,4 @@
-#!/root/Documents/celebal/django2/django_version2/bin/python3.4
+#!/root/Documents/celebal/django_virtualenv/django_version2/bin/python3.4
 # -*- coding: utf-8 -*-
 import re
 import sys

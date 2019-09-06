@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/root/Documents/celebal/django2/django_version2"
+VIRTUAL_ENV="/root/Documents/celebal/django_virtualenv/django_version2"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

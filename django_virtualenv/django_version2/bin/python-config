@@ -1,4 +1,4 @@
-#!/root/Documents/celebal/django2/django_version2/bin/python
+#!/root/Documents/celebal/django_virtualenv/django_version2/bin/python
 
 import sys
 import getopt
